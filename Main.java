@@ -1,31 +1,44 @@
-// Interface for lodging an enquiry
-interface LodgeEnquiry {
-    void lodgeEnquiry(String enquiryId, String information);
-}
+// User class
+class User {
+    private String userId;
 
-// Interface for addressing an enquiry
-interface AddressEnquiry {
-    void addressEnquiry(String enquiryId, String information);
-}
+    public User(String userId) {
+        this.userId = userId;
+    }
+// Tracking enquiry by its ID
+    public String GenerateEnquiryID() {
+        return userId;
+    }
 
-// LodgeEnquiry is implemented by the User class
-class User implements LodgeEnquiry {
-    @Override
-    public void lodgeEnquiry(String enquiryId, String information) {
-        System.out.println("Enquiry ID: " + enquiryId + "\nUser lodges an enquiry: " + information);
+// LodgeEnquiry for storing or processing enquiry information
+    public void lodgeEnquiry(String enquiry) {
+        System.out.println("User lodges a general enquiry:\nEnquiryId: " + userId + "\n" + enquiry);
     }
 }
 
-// Enquiry class
-class Enquiry {
-    // Methods related to Enquiry
+// Instructor class inherited from User
+class Instructor extends User {
+    public Instructor(String userId) {
+        super(userId);
+    }
 }
 
-// AddressEnquiry is implemented by the Manager class
-class Manager implements AddressEnquiry {
-    @Override
-    public void addressEnquiry(String enquiryId, String information) {
-        System.out.println("\nEnquiry ID: " + enquiryId + "\nManager addresses the enquiry: " + information);
+// Student class inherited from User
+class Student extends User {
+    public Student(String userId) {
+        super(userId);
+    }
+}
+
+// Manager class inherited from User
+class Manager extends User {
+    public Manager(String userId) {
+        super(userId);
+    }
+
+    public void addressEnquiry(String enquiry) {
+        System.out.println("\nManager addresses the enquiry:\nEnquiryId: " + GenerateEnquiryID() + "\n" + enquiry);
+        // You can handle the enquiry addressing logic here
     }
 }
 
@@ -33,14 +46,20 @@ class Manager implements AddressEnquiry {
 public class Main {
     public static void main(String[] args) {
         // Instantiate objects
-        User user = new User();
-        Enquiry enquiry = new Enquiry();
-        Manager manager = new Manager();
+        Student student = new Student("s1234567");
+        Instructor instructor = new Instructor("e0123456");
+        Manager manager = new Manager("s1234567");
 
-        // User lodges an enquiry
-        user.lodgeEnquiry("s1234567","Hello Manager, I want to leave this course. Will I be fully refunded if so?");
+        // Student lodges a general enquiry
+        student.lodgeEnquiry("Hello Manager, I want to leave this course. Will I be fully refunded if so?");
 
         // Manager addresses the enquiry
-        manager.addressEnquiry("s1234567","Hello User, depending on your chosen course, you may be eligible for a refund. Please email the finance manager for further discussion.");
+        manager.addressEnquiry("Hello Student, depending on your chosen course, you may be eligible for a refund. Please email the finance manager for further discussion.\n");
+
+        // Instructor lodges a general enquiry
+        instructor.lodgeEnquiry("Hello Manager, how many courses can I register in this portal?");
+
+        // Manager addresses the enquiry
+        manager.addressEnquiry("Hello Instructor, you can have one at most.\n");
     }
 }
