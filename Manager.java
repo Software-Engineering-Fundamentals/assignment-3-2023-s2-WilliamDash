@@ -4,6 +4,10 @@ import java.util.ArrayList;
 public class Manager {
     /**
      * Manager class that represents a manager in the system
+     * Includes all variables mentioned in the new class diagram
+     * Some accessors and mutators have been included (they were not required in the class diagram)
+     * Visibility of variables and methods should match class diagram
+     * Also includes arraylist answeredEnquiries to store enquiries answered by this manager.
      */
     // Instance variables
     private Long managerID;

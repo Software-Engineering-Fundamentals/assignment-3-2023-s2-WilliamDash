@@ -1,6 +1,9 @@
 public class Enquiry {
     /**
      * Enquiry class used to store enquiries and their information
+     * Includes all variables and functions mentioned in the class diagram
+     * Some accessors and mutators have been included (they were not required in the class diagram)
+     * Visibility of variables and methods should match class diagram
      */
     // Instance variables
     private Long enquiryID;
@@ -18,7 +21,7 @@ public class Enquiry {
     }
 
     private void generateEnquiryID() {
-        // Generating an ID for the enquiry
+        // Generating an ID for the enquiry, since this enquiry didn't already exist before now.
         this.enquiryID = 101L; // Dummy fixed ID instead of generating
         System.out.println("Generated (fixed) enquiry ID of: "+this.enquiryID);
     }

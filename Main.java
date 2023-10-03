@@ -1,6 +1,7 @@
-// Main class for instantiating classes and run the sequence of methods
-
 public class Main {
+    /**
+     * Main class for instantiating classes and running the sequence of methods
+     */
     public static void main(String[] args) {
         // Create Instance of Manager
         Manager exampleManager = new Manager(523L, "Bob");
